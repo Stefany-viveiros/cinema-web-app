@@ -22,8 +22,15 @@ async function loadMovies(endpoint, elementId) {
     `url(${IMG_URL + data.results[0].backdrop_path})`;
 }
 
+// BOTÃO SESSÃO
 window.openSessionMode = function() {
   alert('Modo cinema ativado 🎬🍿');
+}
+
+// BOTÃO DA BOMBONIERE
+window.toggleSnackBar = function() {
+  const bar = document.querySelector('.snack-bar');
+  bar.classList.toggle('active');
 }
 
 loadMovies('/movie/now_playing', 'nowPlaying');

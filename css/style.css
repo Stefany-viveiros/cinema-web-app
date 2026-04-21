@@ -48,6 +48,11 @@ button {
   cursor:pointer;
 }
 
+button:hover {
+  background:#ff3333;
+  transition:0.3s;
+}
+
 .seats {
   display:grid;
   grid-template-columns: repeat(8, 40px);
@@ -66,12 +71,40 @@ button {
 .seat.selected { background:green; }
 .seat.occupied { background:red; }
 
+/* BOTÃO FLUTUANTE */
+.open-snack {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: red;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  z-index: 1000;
+}
+
+/* SIDEBAR ESCONDIDA */
 .snack-bar {
-  position:fixed;
-  right:0;
-  top:0;
-  width:200px;
-  height:100%;
-  background:#111;
-  padding:10px;
+  position: fixed;
+  right: -300px;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  background: #111;
+  padding: 20px;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* QUANDO ABRIR */
+.snack-bar.active {
+  right: 0;
+}
+
+#cart {
+  margin-top: 20px;
+  border-top: 1px solid #333;
+  padding-top: 10px;
 }
