@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cinema Experience</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>🎬 Cinema Experience</header>
+
+<div class="banner" id="banner">
+  <h1>Experiência de Cinema</h1>
+  <button onclick="openSessionMode()">Entrar na Sessão</button>
+</div>
+
+<div class="section">
+  <h2>🎥 Em Cartaz</h2>
+  <div class="carousel" id="nowPlaying"></div>
+</div>
+
+<div class="section">
+  <h2>🍿 Estreias</h2>
+  <div class="carousel" id="upcoming"></div>
+</div>
+
+<div class="section">
+  <h2>🔥 Filmes da Semana</h2>
+  <div class="carousel" id="weekly"></div>
+</div>
+
+<div class="section">
+  <h2>🎟 Escolha seu Assento</h2>
+  <div class="seats" id="seats"></div>
+  <button onclick="confirmSeat()">Confirmar Assento</button>
+</div>
+
+<div class="snack-bar">
+  <h3>🍿 Bomboniere</h3>
+
+  <button onclick="addToCart('Pipoca', 15)">Pipoca - R$15</button>
+  <button onclick="addToCart('Refrigerante', 10)">Refri - R$10</button>
+  <button onclick="addToCart('Combo', 20)">Combo - R$20</button>
+
+  <div id="cart"></div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+<script src="js/seats.js"></script>
+<script src="js/cart.js"></script>
+
+</body>
+</html>
