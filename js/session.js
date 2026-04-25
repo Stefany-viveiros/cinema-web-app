@@ -1,33 +1,32 @@
 const IMG_URL = 'https://image.tmdb.org/t/p/original';
 
-// CARREGA DADOS
 document.addEventListener("DOMContentLoaded", () => {
 
   const movie = JSON.parse(localStorage.getItem("movie"));
-  const seat = localStorage.getItem("seat");
 
-  // 🔥 VALIDAÇÃO (IMPORTANTE)
-  if (!movie || !seat) {
-    alert("Sessão inválida!");
+  if (!movie) {
+    alert("Nenhum filme selecionado!");
     window.location.href = "index.html";
     return;
   }
 
-  // 🎬 FILME NO TELÃO
   const screen = document.getElementById("screen");
-  screen.style.backgroundImage = `url(${IMG_URL + movie.backdrop_path})`;
+  const title = document.getElementById("movieTitle");
 
-  // 🎥 INFO
-  document.getElementById("movieTitle").innerText = movie.title;
-  document.getElementById("seatInfo").innerText = "Assento: " + seat;
+  // BACKDROP
+  const backdrop = movie.backdrop_path
+    ? IMG_URL + movie.backdrop_path
+    : "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba";
+
+  screen.style.backgroundImage = `url(${backdrop})`;
+
+  //  TÍTULO
+  title.innerText = movie.title;
 
 });
 
-// 🍿 ABRIR BOMBONIERE
+//  SIDEBAR
 window.toggleSnackBar = function() {
   const bar = document.querySelector('.snack-bar');
-  const overlay = document.querySelector('.overlay');
-
   bar.classList.toggle('active');
-  overlay.classList.toggle('active');
-};
+}
