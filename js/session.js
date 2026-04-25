@@ -30,3 +30,13 @@ window.toggleSnackBar = function() {
   const bar = document.querySelector('.snack-bar');
   bar.classList.toggle('active');
 }
+
+const seats = JSON.parse(localStorage.getItem("seats")) || [];
+
+const info = document.querySelector(".info");
+
+if (seats.length > 0) {
+  const p = document.createElement('p');
+  p.innerText = `🎟 Assentos: ${seats.join(', ')}`;
+  info.appendChild(p);
+}

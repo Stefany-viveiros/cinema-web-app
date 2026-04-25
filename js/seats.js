@@ -3,67 +3,72 @@ document.addEventListener("DOMContentLoaded", () => {
   const cinema = document.getElementById('cinema');
   if (!cinema) return;
 
-  let selectedSeat = null;
-  let currentSelected = null;
-
-  // 🎬 PEGA FILME
+  // 🎬 filme
   const movie = JSON.parse(localStorage.getItem("movie"));
 
-  // 🎥 TÍTULO DO FILME
+  // 🎥 título
   if (movie) {
     const title = document.createElement('h2');
     title.style.textAlign = 'center';
-    title.style.marginBottom = '10px';
     title.innerText = `🎬 ${movie.title}`;
     cinema.before(title);
   }
 
-  // TEXTO DE STATUS
+  // 🎟 controle de assentos
+  let selectedSeats = [];
+  const MAX_SEATS = 6;
+
+  // TEXTO INFO
   const info = document.createElement('p');
   info.style.textAlign = 'center';
   info.style.marginTop = '15px';
-  info.style.fontSize = '18px';
-  info.innerText = "Escolha seu assento 🎟";
+  info.innerText = "Escolha até 6 assentos 🎟";
   cinema.after(info);
 
-  // LINHAS DO CINEMA
-  const rows = ['A','B','C','D','E'];
+  const rows = ['A','B','C','D','E','F','G','H','I','J'];
 
-  // CRIAÇÃO DOS ASSENTOS
   rows.forEach(row => {
     const rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
 
-    // LETRA
     const label = document.createElement('span');
     label.classList.add('row-label');
     label.innerText = row;
     rowDiv.appendChild(label);
 
-    // ASSENTOS
-    for (let i = 1; i <= 8; i++) {
+    for (let i = 1; i <= 18; i++) {
       const seat = document.createElement('div');
       seat.classList.add('seat');
       seat.innerText = i;
 
-      // SIMULAÇÃO DE OCUPADOS
+      // ocupados
       if (Math.random() < 0.3) {
         seat.classList.add('occupied');
       }
 
-      // CLICK
       seat.addEventListener('click', () => {
         if (seat.classList.contains('occupied')) return;
 
-        if (currentSelected) {
-          currentSelected.classList.remove('selected');
+        const seatId = row + i;
+
+        // 👉 remover se já selecionado
+        if (selectedSeats.includes(seatId)) {
+          selectedSeats = selectedSeats.filter(s => s !== seatId);
+          seat.classList.remove('selected');
+        } else {
+
+          // 👉 limite
+          if (selectedSeats.length >= MAX_SEATS) {
+            alert(`Máximo de ${MAX_SEATS} ingressos`);
+            return;
+          }
+
+          selectedSeats.push(seatId);
+          seat.classList.add('selected');
         }
 
-        seat.classList.add('selected');
-        currentSelected = seat;
-        selectedSeat = row + i;
-
-        info.innerText = `Assento selecionado: ${selectedSeat} 🎟`;
+        // atualiza texto
+        info.innerText = `Selecionados: ${selectedSeats.join(', ')} 🎟`;
       });
 
       rowDiv.appendChild(seat);
@@ -74,12 +79,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // CONFIRMAR
   window.confirmSeat = function() {
-    if (!selectedSeat) {
-      alert('Escolha um assento!');
+
+    if (selectedSeats.length === 0) {
+      alert('Escolha pelo menos um assento!');
       return;
     }
 
-    localStorage.setItem("seat", selectedSeat);
+    // salva TODOS
+    localStorage.setItem("seats", JSON.stringify(selectedSeats));
 
     if (!movie) {
       alert("Nenhum filme selecionado!");
