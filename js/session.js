@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 🔥 VALIDAÇÃO (IMPORTANTE)
   if (!movie || !seat) {
     alert("Sessão inválida!");
-    window.location.href = "html/index.html";
+    window.location.href = "index.html";
     return;
   }
 

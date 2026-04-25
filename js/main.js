@@ -40,7 +40,7 @@ async function loadMovies(endpoint, elementId) {
       // 🎬 clique → vai para assentos
       div.onclick = () => {
         localStorage.setItem("movie", JSON.stringify(movie));
-        window.location.href = "html/seats.html";
+        window.location.href = "seats.html";
       };
 
       container.appendChild(div);
