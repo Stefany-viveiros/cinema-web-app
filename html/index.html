@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Cinema Experience</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -12,7 +12,7 @@
 
 <div class="banner" id="banner">
   <h1>Experiência de Cinema</h1>
-  <button onclick="openSessionMode()">Entrar na Sessão</button>
+  <p>Escolha seu filme e viva a experiência 🎥</p>
 </div>
 
 <div class="section">
@@ -30,31 +30,7 @@
   <div class="carousel" id="weekly"></div>
 </div>
 
-<div class="section">
-  <h2>🎟 Escolha seu Assento</h2>
-  <div class="seats" id="seats"></div>
-  <button onclick="confirmSeat()">Confirmar Assento</button>
-</div>
-
-<!-- BOTÃO FLUTUANTE -->
-<button onclick="toggleSnackBar()" class="open-snack">
-  🍿
-</button>
-
-<!-- SIDEBAR -->
-<div class="snack-bar">
-  <h3>🍿 Bomboniere</h3>
-
-  <button onclick="addToCart('Pipoca', 15)">Pipoca - R$15</button>
-  <button onclick="addToCart('Refrigerante', 10)">Refri - R$10</button>
-  <button onclick="addToCart('Combo', 20)">Combo - R$20</button>
-
-  <div id="cart"></div>
-</div>
-
-<script type="module" src="/js/main.js"></script>
-<script src="/js/seats.js"></script>
-<script src="/js/cart.js"></script>
+<script type="module" src="js/main.js"></script>
 
 </body>
 </html>

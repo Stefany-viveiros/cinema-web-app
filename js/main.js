@@ -6,7 +6,9 @@ async function loadMovies(endpoint, elementId) {
   const data = await getMovies(endpoint);
   const container = document.getElementById(elementId);
 
-  data.results.slice(0,10).forEach(movie => {
+  container.innerHTML = ""; // limpa antes de renderizar -------
+
+  data.results.slice(0, 10).forEach(movie => {
     const div = document.createElement('div');
     div.classList.add('movie');
 
@@ -15,24 +17,23 @@ async function loadMovies(endpoint, elementId) {
       <p>${movie.title}</p>
     `;
 
+    // CLIQUE NO FILME ------- VAI PARA ASSENTOS
+    div.onclick = () => {
+      localStorage.setItem("movie", JSON.stringify(movie));
+      window.location.href = "seats.html";
+    };
+
     container.appendChild(div);
   });
 
-  document.getElementById('banner').style.backgroundImage =
-    `url(${IMG_URL + data.results[0].backdrop_path})`;
+  // banner com destaque
+  if (data.results.length > 0) {
+    document.getElementById('banner').style.backgroundImage =
+      `url(${IMG_URL + data.results[0].backdrop_path})`;
+  }
 }
 
-// BOTÃO SESSÃO
-window.openSessionMode = function() {
-  alert('Modo cinema ativado 🎬🍿');
-}
-
-// BOTÃO DA BOMBONIERE
-window.toggleSnackBar = function() {
-  const bar = document.querySelector('.snack-bar');
-  bar.classList.toggle('active');
-}
-
+// CARREGA AS SEÇÕES -------
 loadMovies('/movie/now_playing', 'nowPlaying');
 loadMovies('/movie/upcoming', 'upcoming');
 loadMovies('/movie/popular', 'weekly');
