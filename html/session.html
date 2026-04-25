@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sessão</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>🎬 Sessão em Andamento</header>
+
+<!-- 🎥 TELÃO -->
+<div class="screen-player" id="screen"></div>
+
+<!-- INFO -->
+<div class="info">
+  <h2 id="movieTitle"></h2>
+  <p id="seatInfo"></p>
+</div>
+
+<!-- BOTÃO BOMBONIERE -->
+<button onclick="toggleSnackBar()" class="open-snack">
+  🍿
+</button>
+
+<!-- OVERLAY -->
+<div class="overlay" onclick="toggleSnackBar()"></div>
+
+<!-- SIDEBAR -->
+<div class="snack-bar">
+  <h3>🍿 Bomboniere</h3>
+
+  <button onclick="addToCart('Pipoca', 15)">Pipoca - R$15</button>
+  <button onclick="addToCart('Refrigerante', 10)">Refri - R$10</button>
+  <button onclick="addToCart('Combo', 20)">Combo - R$20</button>
+
+  <div id="cart"></div>
+</div>
+
+<!-- JS -->
+<script src="js/cart.js"></script>
+<script src="js/session.js"></script>
+
+</body>
+</html>
