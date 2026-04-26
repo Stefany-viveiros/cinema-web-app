@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   info.innerText = "Escolha até 6 assentos 🎟";
   cinema.after(info);
 
-  const rows = ['A','B','C','D','E','F','G','H','I','J'];
+  const rows = ['A','B','C','D','E','F','G'];
 
   rows.forEach(row => {
     const rowDiv = document.createElement('div');
