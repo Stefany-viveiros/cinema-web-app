@@ -1,11 +1,9 @@
-/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== BODY ===== */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background: #000;
@@ -24,7 +22,7 @@ header {
   backdrop-filter: blur(10px);
 }
 
-/* ===== BANNER (TELÃO HOME) ===== */
+/* ===== BANNER ===== */
 .banner {
   height: 70vh;
   background-size: cover;
@@ -113,20 +111,23 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* ===== CINEMA (ASSENTOS) ===== */
+/* ===== CINEMA ===== */
 .cinema {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 20px;
   perspective: 1000px;
 }
 
+/* linhas */
 .row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  margin: 6px;
+  margin: 6px auto;
   transform: rotateX(20deg);
 }
 
@@ -136,11 +137,11 @@ button:hover {
   font-weight: bold;
 }
 
-/* ===== ASSENTO ===== */
+/* ===== ASSENTOS ===== */
 .seat {
   width: 40px;
   height: 40px;
-  background: #444;
+  background: #2ecc71; /* 🟢 LIVRE CORRETO */
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -151,12 +152,17 @@ button:hover {
 
 .seat:hover {
   transform: scale(1.1);
+  opacity: 0.85;
 }
 
+/* 🟡 selecionado */
 .seat.selected {
-  background: #00c853;
+  background: #f1c40f;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
 }
 
+/* 🔴 ocupado */
 .seat.occupied {
   background: #d50000;
   cursor: not-allowed;
@@ -176,9 +182,9 @@ button:hover {
   box-shadow: 0 0 30px rgba(255,255,255,0.3);
 }
 
-/* ===== SESSÃO (TELÃO REAL) ===== */
+/* ===== TELÃO REAL ===== */
 .screen-player {
-  height: 60vh;
+  height: 70vh;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -192,12 +198,13 @@ button:hover {
   background: linear-gradient(to top, #000, transparent);
 }
 
+/* ===== INFO ===== */
 .info {
   text-align: center;
   margin-top: 20px;
 }
 
-/* ===== BOTÃO BOMBONIERE ===== */
+/* ===== BOTÃO SNACK ===== */
 .open-snack {
   position: fixed;
   bottom: 25px;
@@ -254,7 +261,6 @@ button:hover {
   padding-top: 10px;
 }
 
-/* ===== ITEM ===== */
 .cart-item {
   display: flex;
   justify-content: space-between;
@@ -279,6 +285,46 @@ button:hover {
   font-weight: bold;
 }
 
+/* ===== LEGENDA ===== */
+.legenda {
+  display: flex;
+  gap: 20px;
+  margin-top: 25px;
+  background: #1e1e1e;
+  padding: 10px 15px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.legenda div {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* boxes legenda */
+.box {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin-right: 6px;
+  border-radius: 3px;
+}
+
+.box.livre {
+  background-color: #2ecc71;
+}
+
+.box.selecionado {
+  background-color: #f1c40f;
+}
+
+.box.ocupado {
+  background-color: #e74c3c;
+}
+
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
 
@@ -299,67 +345,4 @@ button:hover {
     height: 50px;
     line-height: 50px;
   }
-}
-/* 🎬 TELÃO REAL */
-.screen-player {
-  height: 70vh;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-/* efeito cinema */
-.screen-player::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, #000, transparent);
-  top: 0;
-  left: 0;
-}
-
-/* info do filme */
-.info {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.legenda {
-  display: flex;
-  gap: 20px;
-  margin-top: 25px;
-  background: #1e1e1e;
-  padding: 10px 15px;
-  border-radius: 10px;
-  justify-content: center;
-  align-items: center;
-}
-
-.legenda div {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  color: #fff;
-}
-
-/* quadradinhos da legenda */
-.box {
-  width: 14px;
-  height: 14px;
-  display: inline-block;
-  margin-right: 6px;
-  border-radius: 3px;
-}
-
-.box.livre {
-  background-color: #2ecc71;
-}
-
-.box.selecionado {
-  background-color: #f1c40f;
-}
-
-.box.ocupado {
-  background-color: #e74c3c;
 }
