@@ -324,3 +324,42 @@ button:hover {
   text-align: center;
   margin-top: 20px;
 }
+
+.legenda {
+  display: flex;
+  gap: 20px;
+  margin-top: 25px;
+  background: #1e1e1e;
+  padding: 10px 15px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.legenda div {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* quadradinhos da legenda */
+.box {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin-right: 6px;
+  border-radius: 3px;
+}
+
+.box.livre {
+  background-color: #2ecc71;
+}
+
+.box.selecionado {
+  background-color: #f1c40f;
+}
+
+.box.ocupado {
+  background-color: #e74c3c;
+}
